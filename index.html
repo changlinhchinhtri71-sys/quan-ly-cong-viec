@@ -1918,7 +1918,7 @@
     $("#cntTomorrow").textContent = list.filter(isTomorrow).length;
     $("#cntNextWeek").textContent = list.filter(isNextWeek).length;
     $("#cntAll").textContent = list.filter(t => !t.done).length;
-    $("#cntImportant").textContent = list.filter(t => !t.done && (t.starred || t.priority === "p1")).length;
+    $("#cntImportant").textContent = list.filter(t => !t.done && (t.starred || t.priority === "p1" || t.priority === "p2")).length;
     $("#cntOverdue").textContent = list.filter(isOverdue).length;
     $("#cntDone").textContent = list.filter(t => t.done).length;
   }
@@ -2158,7 +2158,7 @@
     else if (currentView === "tomorrow") renderTaskList($("#list-tomorrow"), list.filter(isTomorrow), "Không có việc nào hẹn ngày mai.");
     else if (currentView === "nextweek") renderTaskList($("#list-nextweek"), list.filter(isNextWeek), "Không có việc nào trong tuần tới.");
     else if (currentView === "all") renderTaskList($("#list-all"), list.filter(t => !t.done), "Chưa có việc nào — tạo việc đầu tiên nhé.");
-    else if (currentView === "important") renderTaskList($("#list-important"), list.filter(t => !t.done && (t.starred || t.priority === "p1")), "Chưa có việc quan trọng nào được đánh dấu.");
+    else if (currentView === "important") renderTaskList($("#list-important"), list.filter(t => !t.done && (t.starred || t.priority === "p1" || t.priority === "p2")), "Chưa có việc quan trọng nào được đánh dấu.");
     else if (currentView === "overdue") renderTaskList($("#list-overdue"), list.filter(isOverdue), "Không có việc nào quá hạn. Tốt lắm!");
     else if (currentView === "done") renderTaskList($("#list-done"), list.filter(t => t.done), "Chưa có việc nào hoàn thành.");
     else if (currentView === "projects") renderProjects();
@@ -4100,7 +4100,7 @@
   $("#notifyEmail").addEventListener("change", (e) => { state.notifyEmail = e.target.value.trim(); save(); });
 
   $("#emailImportantBtn").addEventListener("click", () => {
-    const list = activeTasks().filter(t => !t.done && (t.starred || t.priority === "p1" || isOverdue(t)))
+    const list = activeTasks().filter(t => !t.done && (t.starred || t.priority === "p1" || t.priority === "p2" || isOverdue(t)))
       .sort((a, b) => prioRank(a.priority) - prioRank(b.priority));
     if (list.length === 0) { toast("Hiện không có việc quan trọng hoặc quá hạn nào."); return; }
     const subject = "Quản Lý Công Việc — " + list.length + " việc quan trọng/quá hạn cần xử lý";
@@ -4326,7 +4326,7 @@
     const overdue = activeTasks().filter(isOverdue);
     const todayTasks = activeTasks().filter(t => !t.done && isToday(t));
     const nextWeekTasks = activeTasks().filter(isNextWeek).concat(activeTasks().filter(isTomorrow));
-    const important = activeTasks().filter(t => !t.done && (t.starred || t.priority === "p1"));
+    const important = activeTasks().filter(t => !t.done && (t.starred || t.priority === "p1" || t.priority === "p2"));
     const doneTasks = activeTasks().filter(t => t.done);
 
     const sheets = [
@@ -4372,7 +4372,7 @@
     const overdue = activeTasks().filter(isOverdue);
     const todayTasks = activeTasks().filter(t => !t.done && isToday(t));
     const nextWeekTasks = activeTasks().filter(isNextWeek).concat(activeTasks().filter(isTomorrow));
-    const important = activeTasks().filter(t => !t.done && (t.starred || t.priority === "p1"));
+    const important = activeTasks().filter(t => !t.done && (t.starred || t.priority === "p1" || t.priority === "p2"));
     const doneTasks = activeTasks().filter(t => t.done);
     const ownerName = (state.profile && state.profile.name) || "";
     const sections = [
