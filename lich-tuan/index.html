@@ -18,7 +18,7 @@
   --line:#a9b7af;--line2:#cdd7d1;--input:#7d9185;
   --brand:#113a25;--brand-2:#0b2a1a;--gold:#f3c34a;--gold-2:#ffd46b;--gold-ink:#1e1600;
   --accent:#15643a;--accent-2:#0e4b2a;--accent-ink:#ffffff;--accent-soft:#d6ecdf;--accent-line:#7fb896;
-  --danger:#b01f17;--danger-soft:#fde4e1;--warn:#7a4a00;--warn-soft:#ffefc7;--warn-line:#e0b04a;--ok:#11663a;
+  --danger:#b01f17;--danger-soft:#fde4e1;--danger-line:#e08a83;--warn:#7a4a00;--warn-soft:#ffefc7;--warn-line:#e0b04a;--ok:#11663a;
   --shadow:0 1px 2px rgba(10,20,14,.10),0 4px 14px rgba(10,20,14,.08);
   --radius:12px;--focus:0 0 0 3px rgba(21,100,58,.35);--topbar:60px;
   color-scheme:light;
@@ -29,7 +29,7 @@
     --line:#43544a;--line2:#2c3831;--input:#5d7266;
     --brand:#0d2a1b;--brand-2:#081c12;--gold:#f3c34a;--gold-2:#ffd46b;--gold-ink:#1e1600;
     --accent:#4cc584;--accent-2:#6fd9a0;--accent-ink:#04140b;--accent-soft:#183a28;--accent-line:#2f7a52;
-    --danger:#ff8b82;--danger-soft:#3d1c1a;--warn:#ffd27a;--warn-soft:#3a2d10;--warn-line:#8a6a22;--ok:#6fd9a0;
+    --danger:#ff8b82;--danger-soft:#3d1c1a;--danger-line:#8a3a35;--warn:#ffd27a;--warn-soft:#3a2d10;--warn-line:#8a6a22;--ok:#6fd9a0;
     --shadow:0 1px 2px rgba(0,0,0,.5),0 6px 18px rgba(0,0,0,.35);--focus:0 0 0 3px rgba(76,197,132,.45);
     color-scheme:dark;
   }
@@ -39,7 +39,7 @@
   --line:#43544a;--line2:#2c3831;--input:#5d7266;
   --brand:#0d2a1b;--brand-2:#081c12;--gold:#f3c34a;--gold-2:#ffd46b;--gold-ink:#1e1600;
   --accent:#4cc584;--accent-2:#6fd9a0;--accent-ink:#04140b;--accent-soft:#183a28;--accent-line:#2f7a52;
-  --danger:#ff8b82;--danger-soft:#3d1c1a;--warn:#ffd27a;--warn-soft:#3a2d10;--warn-line:#8a6a22;--ok:#6fd9a0;
+  --danger:#ff8b82;--danger-soft:#3d1c1a;--danger-line:#8a3a35;--warn:#ffd27a;--warn-soft:#3a2d10;--warn-line:#8a6a22;--ok:#6fd9a0;
   --shadow:0 1px 2px rgba(0,0,0,.5),0 6px 18px rgba(0,0,0,.35);--focus:0 0 0 3px rgba(76,197,132,.45);
   color-scheme:dark;
 }
@@ -86,7 +86,7 @@ svg.i{width:18px;height:18px;flex:none}
 .btn.soft:hover:not(:disabled){background:var(--accent-soft);border-color:var(--accent)}
 .btn.ghost{border-color:transparent;background:transparent;box-shadow:none}
 .btn.ghost:hover:not(:disabled){background:var(--panel2);border-color:transparent}
-.btn.danger{color:var(--danger);border-color:color-mix(in srgb,var(--danger) 55%,var(--panel))}
+.btn.danger{color:var(--danger);border-color:var(--danger-line)}
 .btn.danger:hover:not(:disabled){background:var(--danger-soft);border-color:var(--danger)}
 .btn.sm{padding:5px 10px;font-size:calc(13.5px * var(--fk));border-radius:8px}
 .btn.lg{padding:11px 18px;font-size:calc(16px * var(--fk));border-radius:11px}
@@ -279,7 +279,7 @@ legend{font-weight:700;padding:0 6px;font-size:calc(14px * var(--fk));color:var(
 .issue{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:9px;border:1.5px solid var(--line);cursor:pointer;background:var(--panel);color:var(--ink);font-weight:500}
 .issue:hover{border-color:var(--accent)}
 .issue svg{margin-top:2px}
-.issue.err{border-color:color-mix(in srgb,var(--danger) 50%,var(--panel))}
+.issue.err{border-color:var(--danger-line)}
 .issue.err svg{color:var(--danger)}
 .issue.warn svg{color:var(--warn)}
 .guide ol{margin:0;padding-left:20px;display:grid;gap:8px;color:var(--text)}
@@ -302,7 +302,7 @@ kbd{font:12.5px ui-monospace,Consolas,monospace;padding:1px 6px;border:1px solid
 .te-f select{border:1.5px solid var(--input);border-radius:8px;padding:6px 8px;background:var(--panel);color:var(--ink);font-weight:500}
 
 /* ===== Thả file ===== */
-#dropzone{position:fixed;inset:12px;border:3px dashed var(--accent);border-radius:18px;background:color-mix(in srgb,var(--panel) 90%,transparent);z-index:80;display:none;align-items:center;justify-content:center;flex-direction:column;gap:8px;font-size:calc(19px * var(--fk));font-weight:700;color:var(--accent);pointer-events:none}
+#dropzone{position:fixed;inset:12px;border:3px dashed var(--accent);border-radius:18px;background:var(--panel);opacity:.96;z-index:80;display:none;align-items:center;justify-content:center;flex-direction:column;gap:8px;font-size:calc(19px * var(--fk));font-weight:700;color:var(--accent);pointer-events:none}
 #dropzone.on{display:flex}
 #dropzone small{font-size:calc(14px * var(--fk));color:var(--label);font-weight:500}
 
